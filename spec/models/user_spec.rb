@@ -27,8 +27,8 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'is not valid with an email with less than 7 characters' do
-      user = build(:user, email: '@.com')
+    it 'is not valid with an email with less than 6 characters' do
+      user = build(:user, email: 'a@b.c')
       expect(user).not_to be_valid
     end
 
@@ -49,13 +49,23 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
+    it 'is not valid with a password less than 8 characters' do
+      user = build(:user, password: 'a123!', password_confirmation: 'a1231')
+      expect(user).not_to be_valid
+    end
+
+    it 'is not valid with a password without a number' do
+      user = build(:user, password: 'password!', password_confirmation: 'password!')
+      expect(user).not_to be_valid
+    end
+
     it 'is not valid with a password without a special character' do
-      user = build(:user, password: 'jAk0bWuZhErE')
+      user = build(:user, password: 'passw0rd', password_confirmation: 'passw0rd')
       expect(user).not_to be_valid
     end
 
     it 'is not valid with a password with invalid characters' do
-      user = build(:user, password: 'jAk0bWuZhErE/')
+      user = build(:user, password: 'password/', password_confirmation: 'password/')
       expect(user).not_to be_valid
     end
 
@@ -64,8 +74,18 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
+    it 'is valid with valid inputs' do
+      user = build(:user,
+        username: 'username',
+        email: 'user@testing.com',
+        password: 'passw0rd!',
+        password_confirmation: 'passw0rd!'
+      )
+      expect(user).to be_valid
+    end
+
     it 'hashes the password' do
-      user = create(:user)
+      user = build(:user)
       expect(user.password_digest).not_to eq('password')
     end
   end
@@ -91,6 +111,9 @@ RSpec.describe User, type: :model do
     let(:user_id) { user.id }
 
     before { user.destroy }
+
+    it 'deletes user' do
+    end
 
     it 'deletes profile' do
     end

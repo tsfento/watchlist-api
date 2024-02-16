@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true, length: { minimum: 5, maximum: 15 }
     validate :validate_username
-    validates :email, presence: true, uniqueness: true, length: { minimum: 7, maximum: 254 },
+    validates :email, presence: true, uniqueness: true, length: { minimum: 6, maximum: 254 },
     format: {
         with: URI::MailTo::EMAIL_REGEXP
     }
@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 8 },
     format: {
         with: /\A.*(?=.*\d)(?=.*[!@#$%^&*]).*\z/,
-        message: 'must contain at least one digit and one special character'
+        message: 'must contain at least one number and one valid special character'
     }, on: :create
     validates :password_confirmation, presence: true, length: { minimum: 8 }, on: :create
 
