@@ -15,6 +15,9 @@ class User < ApplicationRecord
     }, on: :create
     validates :password_confirmation, presence: true, length: { minimum: 8 }, on: :create
 
+    has_many :user_watch_titles
+    has_many :watch_titles, through: :user_watch_titles
+
     private
 
     def validate_username

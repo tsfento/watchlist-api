@@ -26,4 +26,16 @@ RSpec.describe UserWatchTitle, type: :model do
       expect(user_watch_title2.errors[:watch_title]).to include('has already been taken')
     end
   end
+
+  context 'associations' do
+    it "belongs to a user" do
+      user_watch_title = create(:user_watch_title)
+      expect(user_watch_title.user).to be_present
+    end
+
+    it "belongs to a watch_title" do
+      user_watch_title = create(:user_watch_title)
+      expect(user_watch_title.watch_title).to be_present
+    end
+  end
 end

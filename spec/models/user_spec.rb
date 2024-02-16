@@ -106,6 +106,9 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context 'associations' do
+  end
+
   context 'dependency destruction' do
     let(:user) { create(:user) }
     let(:user_id) { user.id }
