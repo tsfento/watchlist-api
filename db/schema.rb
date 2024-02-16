@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_15_201153) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_16_211808) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+  end
+
+  create_table "watch_titles", force: :cascade do |t|
+    t.integer "tmdb_id"
+    t.string "imdb_id"
+    t.string "poster_path"
+    t.string "title"
+    t.datetime "release_date"
+    t.text "overview"
+    t.integer "runtime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
