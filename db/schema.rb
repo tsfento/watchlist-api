@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_16_211808) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_16_221406) do
+  create_table "user_watch_titles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "watch_title_id", null: false
+    t.boolean "watched", default: false
+    t.text "review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_watch_titles_on_user_id"
+    t.index ["watch_title_id"], name: "index_user_watch_titles_on_watch_title_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -31,4 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_211808) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_watch_titles", "users"
+  add_foreign_key "user_watch_titles", "watch_titles"
 end
