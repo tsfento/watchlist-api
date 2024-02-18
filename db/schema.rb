@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_18_223415) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_224705) do
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -28,6 +28,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_223415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+  end
+
+  create_table "watch_list_followers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "watch_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_watch_list_followers_on_user_id"
+    t.index ["watch_list_id"], name: "index_watch_list_followers_on_watch_list_id"
   end
 
   create_table "watch_lists", force: :cascade do |t|
@@ -52,5 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_223415) do
 
   add_foreign_key "user_watch_titles", "users"
   add_foreign_key "user_watch_titles", "watch_titles"
+  add_foreign_key "watch_list_followers", "users"
+  add_foreign_key "watch_list_followers", "watch_lists"
   add_foreign_key "watch_lists", "users"
 end
