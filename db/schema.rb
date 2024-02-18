@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_16_221406) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_223415) do
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -30,6 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_221406) do
     t.string "password_digest"
   end
 
+  create_table "watch_lists", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.boolean "private", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_watch_lists_on_user_id"
+  end
+
   create_table "watch_titles", force: :cascade do |t|
     t.integer "tmdb_id"
     t.string "imdb_id"
@@ -44,4 +52,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_221406) do
 
   add_foreign_key "user_watch_titles", "users"
   add_foreign_key "user_watch_titles", "watch_titles"
+  add_foreign_key "watch_lists", "users"
 end
