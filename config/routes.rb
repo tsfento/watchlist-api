@@ -28,4 +28,7 @@ Rails.application.routes.draw do
 
   # url.com/lists
   get '/lists', to: 'watch_lists#index'
+
+  # url.com/addtitle
+  post '/add_title', to: 'watch_titles#create'
 end
