@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   # url.com/users/:username/lists
   get '/users/:username/lists', to: 'users#lists_index'
+
+  # url.com/users/:username/lists
+  post '/users/:username/lists', to: 'watch_lists#create'
   
   # url.com/users/username/lists/1
   get '/users/:username/lists/:id', to: 'users#list_show'
@@ -31,4 +34,7 @@ Rails.application.routes.draw do
 
   # url.com/addtitle
   post '/add_title', to: 'watch_titles#create'
+
+  # url.com/users/username/lists/1
+  post '/users/:username/lists/:id', to: 'watch_titles#add_title_to_list'
 end

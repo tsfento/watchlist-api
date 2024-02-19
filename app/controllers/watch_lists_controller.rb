@@ -4,4 +4,22 @@ class WatchListsController < ApplicationController
 
         render json: watch_lists, status: :ok
     end
+
+    def create
+        user = User.find_by(username: params[:username])
+
+        watch_list = user.watch_lists.new(watch_list_params)
+
+        if watch_list.save
+            render json: watch_list, status: :created
+        else
+            render json: watch_list.errors, status: :unprocessable_entity
+        end
+    end
+
+    private
+
+    def watch_list_params
+        params.permit(:private, :title)
+    end
 end
