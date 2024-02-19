@@ -21,6 +21,7 @@ RSpec.describe WatchList, type: :model do
       # Try to add same title again
       watch_list.reload
       watch_list.watch_titles << watch_title
+      debugger
       expect(watch_list.watch_titles.count).to be(1)
     end
   end

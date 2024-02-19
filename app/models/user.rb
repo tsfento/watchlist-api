@@ -19,6 +19,7 @@ class User < ApplicationRecord
     has_many :watch_titles, through: :user_watch_titles
 
     has_many :watch_lists
+    has_many :watch_list_followers
 
     private
 
