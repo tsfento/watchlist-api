@@ -1,5 +1,6 @@
 class WatchList < ApplicationRecord
   validates :private, inclusion: [true, false]
+  validates :title, presence: true
 
   belongs_to :user
   has_many :watch_list_followers

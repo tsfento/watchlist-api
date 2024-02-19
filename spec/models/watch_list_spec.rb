@@ -11,10 +11,15 @@ RSpec.describe WatchList, type: :model do
       watch_list = build(:watch_list, private: nil)
       expect(watch_list).not_to be_valid
     end
+
+    it 'is not valid without a title' do
+      watch_list = build(:watch_list, title: nil)
+      expect(watch_list).not_to be_valid
+    end
   end
 
   context 'uniqueness' do
-    it 'is not valid with duplicate titles' do
+    it 'does not allow duplicate titles' do
       watch_list = create(:watch_list)
       watch_title = create(:watch_title)
       watch_list.watch_titles << watch_title
