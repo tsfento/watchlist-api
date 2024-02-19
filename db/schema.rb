@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_18_224705) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_150157) do
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -45,6 +45,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_224705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_watch_lists_on_user_id"
+  end
+
+  create_table "watch_lists_titles", id: false, force: :cascade do |t|
+    t.integer "watch_list_id", null: false
+    t.integer "watch_title_id", null: false
+    t.index ["watch_list_id", "watch_title_id"], name: "index_watch_lists_titles_on_watch_list_id_and_watch_title_id"
+    t.index ["watch_title_id", "watch_list_id"], name: "index_watch_lists_titles_on_watch_title_id_and_watch_list_id"
   end
 
   create_table "watch_titles", force: :cascade do |t|

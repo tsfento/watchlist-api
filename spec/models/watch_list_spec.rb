@@ -15,11 +15,13 @@ RSpec.describe WatchList, type: :model do
 
   context 'uniqueness' do
     it 'is not valid with duplicate titles' do
-      # watch_list = create(:watch_list)
-      # watch_title1 = create(:watch_title)
-      # watch_title2 = create(:watch_title)
-      # expect(watch_list).not_to be_valid
-      # expect(watch_list.errors[:watch_titles]).to include('has already been taken')
+      watch_list = create(:watch_list)
+      watch_title = create(:watch_title)
+      watch_list.watch_titles << watch_title
+      # Try to add same title again
+      watch_list.reload
+      watch_list.watch_titles << watch_title
+      expect(watch_list.watch_titles.count).to be(1)
     end
   end
 
@@ -30,11 +32,11 @@ RSpec.describe WatchList, type: :model do
     end
 
     it 'has many watch_titles' do
-      # watch_list = create(:watch_list)
-      # create_list(:watch_title, 3, watch_lists: [watch_list])
+      watch_list = create(:watch_list)
+      create_list(:watch_title, 3, watch_lists: [watch_list])
 
-      # watch_list.reload
-      # expect(watch_list.watch_titles.count).to eq(3)
+      watch_list.reload
+      expect(watch_list.watch_titles.count).to eq(3)
     end
   end
 end
