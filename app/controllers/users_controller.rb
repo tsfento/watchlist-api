@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
 
     def lists_index
-        render json: @user.watch_lists, status: :ok
+        render json: @user.watch_lists, include: [:user], status: :ok
     end
 
     def list_show
