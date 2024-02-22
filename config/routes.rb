@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   # url.com/lists
   get '/lists', to: 'watch_lists#index'
 
+  # url.com/users/:username/lists/followed
+  get '/users/:username/followed_lists', to: 'users#followed_lists_index'
+
   # url.com/addtitle
   post '/add_title', to: 'watch_titles#create'
 
