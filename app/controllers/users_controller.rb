@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :list_show]
+    before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show]
 
     def show
         render json: @user, status: :ok
@@ -45,8 +45,10 @@ class UsersController < ApplicationController
         status: :ok
     end
 
-    def list_show
-        render json: @user.watch_lists.find(params[:id]).watch_titles, status: :ok
+    def titles_show
+        render json: @user.watch_lists.find(params[:id]).watch_titles,
+        # include: [:user_watch_titles], only send for current user
+        status: :ok
     end
 
     private

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post '/users/:username/lists', to: 'watch_lists#create'
   
   # url.com/users/username/lists/1
-  get '/users/:username/lists/:id', to: 'users#list_show'
+  get '/users/:username/lists/:id', to: 'users#titles_show'
 
   # url.com/lists
   get '/lists', to: 'watch_lists#index'
