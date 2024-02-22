@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     def lists_index
         render json: @user.watch_lists,
         include: [:user => {only: :username}],
-        methods: [:watch_titles_count],
+        methods: [:watch_titles_count, :poster_img],
         status: :ok
     end
 

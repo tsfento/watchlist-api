@@ -9,5 +9,15 @@ class WatchList < ApplicationRecord
 
   def watch_titles_count
     watch_titles.count
-end
+  end
+
+  def poster_img
+    title = watch_titles.all.sample
+
+    if title == nil
+      'empty'
+    else
+      title.poster_path
+    end
+  end
 end
