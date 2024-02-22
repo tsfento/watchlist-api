@@ -32,7 +32,10 @@ class UsersController < ApplicationController
     end
 
     def lists_index
-        render json: @user.watch_lists, include: [:user], status: :ok
+        render json: @user.watch_lists,
+        include: [:user => {only: :username}],
+        methods: [:watch_titles_count],
+        status: :ok
     end
 
     def list_show
