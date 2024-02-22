@@ -1,5 +1,5 @@
 class WatchTitlesController < ApplicationController
-    before_action :set_user_and_list, only: [:add_title_to_list]
+    before_action :set_user_and_list, only: [:show_titles, :add_title_to_list]
 
     def create
         watch_title = WatchTitle.new(watch_title_params)

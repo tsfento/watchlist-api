@@ -39,7 +39,6 @@ class UsersController < ApplicationController
     end
 
     def followed_lists_index
-        # render json: WatchList.all.where(watch_list_followers.user_id == @user.id),
         render json: WatchList.joins(:watch_list_followers).where(:watch_list_followers => {:user_id => @user.id}),
         include: [:user => {only: :username}],
         methods: [:watch_titles_count, :poster_img],
