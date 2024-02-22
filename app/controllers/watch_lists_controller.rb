@@ -2,7 +2,7 @@ class WatchListsController < ApplicationController
     def index
         watch_lists = WatchList.all.where(private: false)
 
-        render json: watch_lists, include: [:user], status: :ok
+        render json: watch_lists, include: [:user => {only: :username}], status: :ok
     end
 
     def create

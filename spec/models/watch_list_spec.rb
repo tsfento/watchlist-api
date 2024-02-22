@@ -16,10 +16,24 @@ RSpec.describe WatchList, type: :model do
       watch_list = build(:watch_list, title: nil)
       expect(watch_list).not_to be_valid
     end
+
+    it 'is not valid with a duplicate title' do
+      watch_list1 = create(:watch_list)
+      watch_list2 = build(:watch_list, user: watch_list1.user, title: watch_list1.title)
+      expect(watch_list2).not_to be_valid
+    end
+
+    it 'is valid with duplicate titles with different users' do
+      user1 = create(:user)
+      user2 = create(:user)
+      watch_list1 = create(:watch_list, user: user1)
+      watch_list2 = build(:watch_list, user: user2, title: watch_list1.title)
+      expect(watch_list2).to be_valid
+    end
   end
 
   context 'uniqueness' do
-    it 'does not allow duplicate titles' do
+    it 'does not allow duplicate watch_titles' do
       watch_list = create(:watch_list)
       watch_title = create(:watch_title)
       watch_list.watch_titles << watch_title
