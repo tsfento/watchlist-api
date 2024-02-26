@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   # url.com/login
   post '/login', to: 'sessions#create'
 
+  scope '/tmdb' do
+    get '/now_playing', to: 'tmdb#now_playing'
+    get '/popular', to: 'tmdb#popular'
+  end
+
   # url.com/users/username
   get '/users/:username', to: 'users#show'
 
