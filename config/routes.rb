@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  # url.com/login
+  post '/login', to: 'sessions#create'
+
   # url.com/users/username
   get '/users/:username', to: 'users#show'
 
