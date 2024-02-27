@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   scope '/tmdb' do
-    get '/now_playing', to: 'tmdb#now_playing'
-    get '/popular', to: 'tmdb#popular'
+    get '/now_playing_movies', to: 'tmdb#now_playing_movies'
+    get '/popular_movies', to: 'tmdb#popular_movies'
+    get '/popular_tv', to: 'tmdb#popular_tv'
+    get '/top_rated_tv', to: 'tmdb#top_rated_tv'
   end
 
   # url.com/users/username
