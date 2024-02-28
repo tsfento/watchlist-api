@@ -18,36 +18,31 @@ Rails.application.routes.draw do
     get '/top_rated_tv', to: 'tmdb#top_rated_tv'
   end
 
-  # url.com/users/username
-  get '/users/:username', to: 'users#show'
-
-  # url.com/users
-  post '/users', to: 'users#create'
-
-  # url.com/users/username/edit
-  put '/users/:username/edit', to: 'users#update'
-
-  # url.com/users/:username
-  delete '/users/:username', to: 'users#destroy'
-
-  # url.com/users/:username/lists
-  get '/users/:username/lists', to: 'users#lists_index'
-
-  # url.com/users/:username/lists
-  post '/users/:username/lists', to: 'watch_lists#create'
+  scope '/users' do
+    # show specific user
+    get '/:username', to: 'users#show'
+    # create a new user
+    post '/sign_up', to: 'users#create'
+    # update a specific user
+    put '/:username/edit', to: 'users#update'
+    # delete a specific user
+    delete '/:username', to: 'users#destroy'
+    # get all lists of a specific user
+    get '/:username/lists', to: 'users#lists_index'
+    # create a new list for a specific user
+    post '/:username/lists', to: 'watch_lists#create'
+    # get specific list from specific user
+    get '/:username/lists/:id', to: 'users#titles_show'
+    # get a specific user's followed lists
+    get '/:username/followed_lists', to: 'users#followed_lists_index'
+    # add a title to a specific list for a specific user
+    post '/:username/lists/:id', to: 'watch_titles#add_title_to_list'
+  end
   
-  # url.com/users/username/lists/1
-  get '/users/:username/lists/:id', to: 'users#titles_show'
 
   # url.com/lists
   get '/lists', to: 'watch_lists#index'
 
-  # url.com/users/:username/lists/followed
-  get '/users/:username/followed_lists', to: 'users#followed_lists_index'
-
   # url.com/addtitle
   post '/add_title', to: 'watch_titles#create'
-
-  # url.com/users/username/lists/1
-  post '/users/:username/lists/:id', to: 'watch_titles#add_title_to_list'
 end
