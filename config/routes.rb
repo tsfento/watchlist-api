@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  get 'web/bootstrap'
+
   # url.com/login
   post '/login', to: 'sessions#create'
 
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
     # get all lists of a specific user
     get '/:username/lists', to: 'users#lists_index'
     # create a new list for a specific user
-    post '/:username/lists', to: 'watch_lists#create'
+    post '/:username/lists', to: 'watch_lists#create_list'
     # get specific list from specific user
     get '/:username/lists/:id', to: 'users#titles_show'
     # get a specific user's followed lists

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show]
+    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index]
 
     def show
         render json: @user, status: :ok
@@ -30,6 +31,8 @@ class UsersController < ApplicationController
             render json: @user.errors, status: :unprocessable_entity
         end
     end
+
+    # user lists
 
     def lists_index
         render json: @user.watch_lists,

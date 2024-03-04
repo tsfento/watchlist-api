@@ -1,4 +1,6 @@
 class WatchListsController < ApplicationController
+    before_action :authenticate_request, only: [:create]
+
     def index
         watch_lists = WatchList.all.where(private: false)
 
@@ -9,9 +11,7 @@ class WatchListsController < ApplicationController
     end
 
     def create
-        user = User.find_by(username: params[:username])
-
-        watch_list = user.watch_lists.new(watch_list_params)
+        watch_list = @current_user.watch_lists.new(watch_list_params)
 
         if watch_list.save
             render json: watch_list, status: :created
