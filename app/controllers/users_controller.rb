@@ -37,14 +37,14 @@ class UsersController < ApplicationController
     def lists_index
         render json: @user.watch_lists,
         include: [:user => {only: :username}],
-        methods: [:watch_titles_count, :poster_img],
+        methods: [:watch_titles_count, :poster_imgs],
         status: :ok
     end
 
     def followed_lists_index
         render json: WatchList.joins(:watch_list_followers).where(:watch_list_followers => {:user_id => @user.id}),
         include: [:user => {only: :username}],
-        methods: [:watch_titles_count, :poster_img],
+        methods: [:watch_titles_count, :poster_imgs],
         status: :ok
     end
 

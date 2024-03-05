@@ -7,7 +7,7 @@ class WatchListsController < ApplicationController
 
         render json: watch_lists,
             include: [:user => {only: :username}],
-            methods: [:watch_titles_count, :poster_img],
+            methods: [:watch_titles_count, :poster_imgs],
             status: :ok
     end
 

@@ -11,12 +11,8 @@ class WatchList < ApplicationRecord
     watch_titles.count
   end
 
-  def poster_img
-    title = watch_titles.all.sample
-
-    if title == nil
-      'empty'
-    else
+  def poster_imgs
+    title_posters = watch_titles.all.sample(15).map do |title|
       title.poster_path
     end
   end
