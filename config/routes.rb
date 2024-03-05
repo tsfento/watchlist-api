@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get '/popular_movies', to: 'tmdb#popular_movies'
     get '/popular_tv', to: 'tmdb#popular_tv'
     get '/top_rated_tv', to: 'tmdb#top_rated_tv'
+    get '/movie/details/:id', to: 'tmdb#movie_details'
+    get '/tv/details/:id', to: 'tmdb#tv_details'
   end
 
   scope '/users' do
