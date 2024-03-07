@@ -31,5 +31,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-app/controllers/tmdb_controller.rb
 config/credentials.yml.enc
