@@ -7,7 +7,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:3000', 'watchlist-client-neon.vercel.app'
+    origins 'localhost:3000',
+      'https://watchlist-client-neon.vercel.app',
+      'https://watchlist-client-neon.vercel.app',
+      'https://watchlist-client-9nwvsh5zp-tyler-fentons-projects.vercel.app'
+
 
     resource "*",
       headers: :any,
