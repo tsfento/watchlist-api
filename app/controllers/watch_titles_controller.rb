@@ -1,5 +1,6 @@
 class WatchTitlesController < ApplicationController
     before_action :set_user_and_list, only: [:add_title_to_list]
+    before_action :authenticate_request, only: [:add_title_to_list]
 
     def create
         watch_title = WatchTitle.new(watch_title_params)
@@ -15,11 +16,15 @@ class WatchTitlesController < ApplicationController
         watch_title = @watch_list.watch_titles.new(watch_title_params)
 
         if title_present = WatchTitle.find_by(tmdb_id: watch_title.tmdb_id)
-            @user.user_watch_titles.create(user_id: @user.id, watch_title_id: title_present.id)
+            # puts params
+            # puts watch_title.title
+            @current_user.user_watch_titles.create(user_id: @current_user.id, watch_title_id: title_present.id)
+            puts @current_user.user_watch_titles.last.watch_title.title
             @watch_list.watch_titles << title_present
             render json: title_present, status: :ok
         elsif watch_title.save
-            @user.user_watch_titles.create(user_id: @user.id, watch_title_id: watch_title.id)
+            # puts watch_title.title
+            @current_user.user_watch_titles.create(user_id: @current_user.id, watch_title_id: watch_title.id)
             @watch_list.watch_titles << watch_title
             render json: watch_title, status: :ok
         else

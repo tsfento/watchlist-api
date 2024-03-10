@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show]
-    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index]
+    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index, :titles_show]
 
     def show
         render json: @user, status: :ok
@@ -49,9 +49,18 @@ class UsersController < ApplicationController
     end
 
     def titles_show
-        render json: @user.watch_lists.find(params[:id]).watch_titles,
+        list = @user.watch_lists.find(params[:id])
+        titles = list.watch_titles
+
+        if list.user_id == @current_user.id
+            # render WatchTitleBlueprint.render_as_hash(titles, :current_user_titles), status: :ok
+            render json: titles, include: [:user_watch_titles], status: :ok
+            puts 'current user'
+        else
+            render json: titles, status: :ok
+        end
         # include: [:user_watch_titles], only send for current user
-        status: :ok
+        # status: :ok
     end
 
     private
