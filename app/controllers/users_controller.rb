@@ -52,10 +52,9 @@ class UsersController < ApplicationController
         list = @user.watch_lists.find(params[:id])
         titles = list.watch_titles
 
-        if list.user_id == @current_user.id
-            # render WatchTitleBlueprint.render_as_hash(titles, :current_user_titles), status: :ok
-            render json: titles, include: [:user_watch_titles], status: :ok
-            puts 'current user'
+        if @current_user && list.user_id == @current_user.id
+            # render WatchTitleBlueprint.render_as_hash(titles, view: :current_user_titles), status: :ok
+            render json: titles, include: [:current_user_watch_titles], status: :ok
         else
             render json: titles, status: :ok
         end
@@ -67,7 +66,7 @@ class UsersController < ApplicationController
 
     def set_user
         @user = User.find_by(username: params[:username])
-      end
+    end
 
     def user_params
         params.permit(:email, :username, :password, :password_confirmation)

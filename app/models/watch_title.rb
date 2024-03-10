@@ -5,4 +5,8 @@ class WatchTitle < ApplicationRecord
     has_many :user_watch_titles
     has_many :users, through: :user_watch_titles
     has_and_belongs_to_many :watch_lists
+
+    def current_user_watch_titles
+        self.user_watch_titles
+    end
 end

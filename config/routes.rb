@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     get '/:username/followed_lists', to: 'users#followed_lists_index'
     # add a title to a specific list for a specific user
     post '/:username/lists/:id', to: 'watch_titles#add_title_to_list'
+    # get user_watch_titles for a specific user
+    get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
   end
   
 

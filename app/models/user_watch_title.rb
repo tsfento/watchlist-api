@@ -5,4 +5,8 @@ class UserWatchTitle < ApplicationRecord
 
   belongs_to :user
   belongs_to :watch_title
+
+  def tmdb_id
+      watch_title.tmdb_id
+  end
 end
