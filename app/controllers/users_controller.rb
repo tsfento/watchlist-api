@@ -53,13 +53,11 @@ class UsersController < ApplicationController
         titles = list.watch_titles
 
         if @current_user && list.user_id == @current_user.id
-            # render WatchTitleBlueprint.render_as_hash(titles, view: :current_user_titles), status: :ok
-            render json: titles, include: [:current_user_watch_titles], status: :ok
+            # decide whether to keep current_user_watch_titles (currently getting separate)
+            render json: titles, methods: [:current_user_watch_titles], status: :ok
         else
             render json: titles, status: :ok
         end
-        # include: [:user_watch_titles], only send for current user
-        # status: :ok
     end
 
     private

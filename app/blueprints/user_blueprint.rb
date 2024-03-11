@@ -5,5 +5,6 @@ class UserBlueprint < Blueprinter::Base
 
     view :me do
         fields :username
+        association :user_watch_titles, blueprint: UserWatchTitleBlueprint, view: :normal
     end
 end

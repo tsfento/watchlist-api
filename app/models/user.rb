@@ -21,6 +21,10 @@ class User < ApplicationRecord
     has_many :watch_lists
     has_many :watch_list_followers
 
+    def current_user_watch_titles
+        self.user_watch_titles
+    end
+
     private
 
     def validate_username
