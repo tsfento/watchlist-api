@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show]
-    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index, :titles_show]
+    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index]
 
     def show
         render json: @user, status: :ok
@@ -52,12 +52,14 @@ class UsersController < ApplicationController
         list = @user.watch_lists.find(params[:id])
         titles = list.watch_titles
 
-        if @current_user && list.user_id == @current_user.id
-            # decide whether to keep current_user_watch_titles (currently getting separate)
-            render json: titles, methods: [:current_user_watch_titles], status: :ok
-        else
-            render json: titles, status: :ok
-        end
+        render json: titles, status: :ok
+
+        # if @current_user && list.user_id == @current_user.id
+        #     # decide whether to keep current_user_watch_titles (currently getting separate)
+        #     render json: titles, status: :ok
+        # else
+        #     render json: titles, status: :ok
+        # end
     end
 
     private

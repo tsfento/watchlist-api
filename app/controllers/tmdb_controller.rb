@@ -54,4 +54,8 @@ class TmdbController < ApplicationController
 
         render json: response, status: :ok
     end
+
+    def search_tmdb
+        # response = RestClient.get("#{base_url}")
+    end
 end
