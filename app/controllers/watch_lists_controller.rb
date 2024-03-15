@@ -3,6 +3,7 @@ class WatchListsController < ApplicationController
 
     def index
         # watch_lists = WatchList.all.where(private: false)
+        # below excludes lists with no titles
         watch_lists = WatchList.all.where(private: false).where.associated(:watch_titles).distinct
 
         render json: watch_lists,

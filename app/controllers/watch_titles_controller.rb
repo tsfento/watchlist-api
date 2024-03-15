@@ -16,14 +16,10 @@ class WatchTitlesController < ApplicationController
         watch_title = @watch_list.watch_titles.new(watch_title_params)
 
         if title_present = WatchTitle.find_by(tmdb_id: watch_title.tmdb_id)
-            # puts params
-            # puts watch_title.title
             @current_user.user_watch_titles.create(user_id: @current_user.id, watch_title_id: title_present.id)
-            puts @current_user.user_watch_titles.last.watch_title.title
             @watch_list.watch_titles << title_present
             render json: title_present, status: :ok
         elsif watch_title.save
-            # puts watch_title.title
             @current_user.user_watch_titles.create(user_id: @current_user.id, watch_title_id: watch_title.id)
             @watch_list.watch_titles << watch_title
             render json: watch_title, status: :ok

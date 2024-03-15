@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show]
-    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index]
+    before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index, :delete_list]
 
     def show
         render json: @user, status: :ok
@@ -60,6 +60,20 @@ class UsersController < ApplicationController
         # else
         #     render json: titles, status: :ok
         # end
+    end
+
+    def delete_list
+        list = @user.watch_lists.find(params[:id])
+        
+        if @user.id == @current_user.id
+            if list.destroy
+                render json: nil, status: :no_content
+            else
+                render json: list.errors, status: :unprocessable_entity
+            end
+        else
+            render json: { error: 'Unauthorized' }, status: :unauthorized
+        end
     end
 
     private
