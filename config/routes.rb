@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     post '/:username/lists', to: 'watch_lists#create'
     # get specific list from specific user
     get '/:username/lists/:id', to: 'users#titles_show'
+    # delete list
+    delete '/:username/lists/:id', to: 'users'
     # get a specific user's followed lists
     get '/:username/followed_lists', to: 'users#followed_lists_index'
     # add a title to a specific list for a specific user
