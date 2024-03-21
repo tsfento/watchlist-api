@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
     has_many :watch_lists
     has_many :watch_list_followers
+    has_many :watch_dates, through: :user_watch_titles
 
     def current_user_watch_titles
         self.user_watch_titles
