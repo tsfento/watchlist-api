@@ -38,14 +38,22 @@ class WatchTitlesController < ApplicationController
         #     overview: params[:overview],
         #     runtime: params[:runtime]
         # )
-        watch_title = WatchTitle.find_or_create_by(watch_title_params)
+        # watch_title = WatchTitle.find_or_create_by(watch_title_params)
 
-        user_watch_title = UserWatchTitle.find_or_create_by(user_id: @user.id, watch_title_id: watch_title.id)
+        # user_watch_title = UserWatchTitle.find_or_create_by(user_id: @user.id, watch_title_id: watch_title.id)
 
-        watch_date = WatchDate.new(user_watch_title_id: user_watch_title.id, date: params[:date])
+        # watch_date = WatchDate.new(user_watch_title_id: user_watch_title.id, date: params[:date])
 
-        if watch_date.save
-            render json: watch_date, status: :ok
+        # if watch_date.save
+        #     render json: watch_date, status: :ok
+        # else
+        #     render json: watch_date.errors, status: :unprocessable_entity
+        # end
+
+        watch_date = WatchDateService.create_watch_date(params, @user.id)
+
+        if watch_date.valid?
+            render json: watch_date, status: :created
         else
             render json: watch_date.errors, status: :unprocessable_entity
         end
@@ -55,7 +63,7 @@ class WatchTitlesController < ApplicationController
 
     def set_user_and_list
         @user = User.find_by(username: params[:username])
-        @watch_list = WatchList.find(params[:id])
+        @watch_list = WatchList.find(params[:id]) if params[:id].present?
     end
 
     def watch_title_params
