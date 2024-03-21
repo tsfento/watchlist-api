@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_19_200031) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_21_145157) do
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -22,12 +22,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_200031) do
     t.index ["watch_title_id"], name: "index_user_watch_titles_on_watch_title_id"
   end
 
+  create_table "user_watch_titles_watch_dates", id: false, force: :cascade do |t|
+    t.integer "user_watch_title_id", null: false
+    t.integer "watch_date_id", null: false
+    t.index ["user_watch_title_id", "watch_date_id"], name: "idx_on_user_watch_title_id_watch_date_id_740401bc1b"
+    t.index ["watch_date_id", "user_watch_title_id"], name: "idx_on_watch_date_id_user_watch_title_id_21704fa289"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+  end
+
+  create_table "watch_dates", force: :cascade do |t|
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "watch_list_followers", force: :cascade do |t|

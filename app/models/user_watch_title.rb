@@ -7,4 +7,6 @@ class UserWatchTitle < ApplicationRecord
 
   belongs_to :user
   belongs_to :watch_title
+  has_many :watch_dates
+  has_and_belongs_to_many :watch_titles, -> { distinct }
 end
