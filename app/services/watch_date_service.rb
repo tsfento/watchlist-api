@@ -4,7 +4,8 @@ module WatchDateService
         user_watch_title = UserWatchTitle.find_or_create_by(user_id: user_id, watch_title_id: watch_title.id)
         watch_date = WatchDate.find_or_create_by(date: date_params[:date])
 
-        user_watch_title.watch_dates << watch_date
+        # begin rescue https://stackoverflow.com/a/3694229
+        user_watch_title.watch_dates << watch_date unless user_watch_title.watch_dates.include?(watch_date)
         watch_date
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_21_145157) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_21_211258) do
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_145157) do
   create_table "user_watch_titles_watch_dates", id: false, force: :cascade do |t|
     t.integer "user_watch_title_id", null: false
     t.integer "watch_date_id", null: false
-    t.index ["user_watch_title_id", "watch_date_id"], name: "idx_on_user_watch_title_id_watch_date_id_740401bc1b"
-    t.index ["watch_date_id", "user_watch_title_id"], name: "idx_on_watch_date_id_user_watch_title_id_21704fa289"
+    t.index ["user_watch_title_id", "watch_date_id"], name: "idx_on_user_watch_title_id_watch_date_id_740401bc1b", unique: true
+    t.index ["watch_date_id", "user_watch_title_id"], name: "idx_on_watch_date_id_user_watch_title_id_21704fa289", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,8 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_145157) do
   create_table "watch_lists_titles", id: false, force: :cascade do |t|
     t.integer "watch_list_id", null: false
     t.integer "watch_title_id", null: false
-    t.index ["watch_list_id", "watch_title_id"], name: "index_watch_lists_titles_on_watch_list_id_and_watch_title_id"
-    t.index ["watch_title_id", "watch_list_id"], name: "index_watch_lists_titles_on_watch_title_id_and_watch_list_id"
+    t.index ["watch_list_id", "watch_title_id"], name: "index_watch_lists_titles_on_watch_list_id_and_watch_title_id", unique: true
+    t.index ["watch_title_id", "watch_list_id"], name: "index_watch_lists_titles_on_watch_title_id_and_watch_list_id", unique: true
   end
 
   create_table "watch_titles", force: :cascade do |t|
