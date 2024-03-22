@@ -64,9 +64,6 @@ class TmdbController < ApplicationController
     end
 
     def search_tmdb
-        # 'https://api.themoviedb.org/3/search/movie?query=burbs&include_adult=false&language=en&page=1
-        # deal with additional pages
-
         response = RestClient.get("#{@base_url}/search/#{params[:type]}?query=#{params[:query]}&include_adult=false&language=#{params[:lang]}&page=#{params[:page]}", {
             Authorization: "Bearer #{@token}"
         })

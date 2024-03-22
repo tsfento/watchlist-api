@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show]
+    before_action :set_user, only: [:show, :update, :destroy, :lists_index, :followed_lists_index, :titles_show, :delete_list]
     before_action :authenticate_request, only: [:update, :destroy, :followed_lists_index, :delete_list]
 
     def show
