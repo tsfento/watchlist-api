@@ -1,5 +1,5 @@
 class WatchListsController < ApplicationController
-    before_action :authenticate_request, only: [:create]
+    before_action :authenticate_request, only: [:create, :follow_list, :unfollow_list]
 
     def index
         # watch_lists = WatchList.all.where(private: false)
@@ -19,6 +19,27 @@ class WatchListsController < ApplicationController
             render json: watch_list, status: :created
         else
             render json: watch_list.errors, status: :unprocessable_entity
+        end
+    end
+
+    def follow_list
+        # watch_list = WatchList.find(params[:id])
+        follow = WatchListFollower.new(user_id: @current_user.id, watch_list_id: params[:id])
+
+        if follow.save
+            render json: follow, status: :ok
+        else
+            render json: follow.errors, status: :unprocessable_entity
+        end
+    end
+
+    def unfollow_list
+        follow = WatchListFollower.find_by(user_id: @current_user.id, watch_list_id: params[:id])
+
+        if follow.destroy
+            render json: nil, status: :ok
+        else
+            render json: follow.errors, status: :unprocessable_entity
         end
     end
 

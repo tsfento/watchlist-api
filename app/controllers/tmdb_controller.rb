@@ -14,6 +14,12 @@ class TmdbController < ApplicationController
             Authorization: "Bearer #{@token}"
         })
 
+        # json_response = JSON.parse(response, symbolize_names: true)
+        # json_response[:results].map! { |t| movie_details(t[:id]) }
+
+        # puts json_response
+
+        # render json: json_response, status: :ok
         render json: response, status: :ok
     end
 
@@ -48,9 +54,15 @@ class TmdbController < ApplicationController
     end
 
     def movie_details
+
         response = RestClient.get("#{@base_url}/movie/#{params[:id]}?language=en-US", {
             Authorization: "Bearer #{@token}"
         })
+        # response = RestClient.get("#{@base_url}/movie/#{id}?language=en-US", {
+        #     Authorization: "Bearer #{@token}"
+        # })
+
+        # JSON.parse(response)
 
         render json: response, status: :ok
     end
