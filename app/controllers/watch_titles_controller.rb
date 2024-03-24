@@ -1,6 +1,6 @@
 class WatchTitlesController < ApplicationController
-    before_action :set_user_and_list, only: [:add_title_to_list, :add_watch_date]
-    before_action :authenticate_request, only: [:add_title_to_list, :add_watch_date]
+    before_action :set_user_and_list, only: [:add_title_to_list, :delete_title, :add_watch_date]
+    before_action :authenticate_request, only: [:add_title_to_list, :delete_title, :add_watch_date]
 
     # def create
     #     watch_title = WatchTitle.new(watch_title_params)
@@ -28,28 +28,18 @@ class WatchTitlesController < ApplicationController
         end
     end
 
+    def delete_title
+        if (@watch_list.user_id == @current_user.id)
+
+            if @watch_list.watch_titles.delete(WatchTitle.find_by(tmdb_id: params[:tmdb_id]))
+                render json: nil, status: :no_content
+            else
+                render json: @watch_list.errors, status: :unprocessable_entity
+            end
+        end
+    end
+
     def add_watch_date
-        # watch_title = WatchTitle.find_or_create_by(
-        #     tmdb_id: params[:tmdb_id],
-        #     imdb_id: params[:imdb_id],
-        #     poster_path: params[:poster_path],
-        #     title: params[:title],
-        #     release_date: params[:release_date],
-        #     overview: params[:overview],
-        #     runtime: params[:runtime]
-        # )
-        # watch_title = WatchTitle.find_or_create_by(watch_title_params)
-
-        # user_watch_title = UserWatchTitle.find_or_create_by(user_id: @user.id, watch_title_id: watch_title.id)
-
-        # watch_date = WatchDate.new(user_watch_title_id: user_watch_title.id, date: params[:date])
-
-        # if watch_date.save
-        #     render json: watch_date, status: :ok
-        # else
-        #     render json: watch_date.errors, status: :unprocessable_entity
-        # end
-
         watch_date = WatchDateService.create_watch_date(params, @user.id)
 
         if watch_date.valid?

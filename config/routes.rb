@@ -48,6 +48,8 @@ Rails.application.routes.draw do
     get '/unfollow_list/:id', to: 'watch_lists#unfollow_list'
     # add a title to a specific list for a specific user
     post '/:username/lists/:id', to: 'watch_titles#add_title_to_list'
+    # delete a title from a list
+    delete '/:username/lists/:id/:tmdb_id', to: 'watch_titles#delete_title'
     # get user_watch_titles for a specific user
     # get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
     # add watch date to title for specific user
