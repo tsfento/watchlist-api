@@ -19,15 +19,18 @@ module WatchDateService
         user_dates = Hash.new
 
         user.watch_dates.each do |d|
+            date = d.date.strftime("%Y-%m-%d")
             titles = Array.new
 
             d.user_watch_titles.each do |t|
                 titles.push(t.watch_title)
             end
 
-            user_dates[d.date] = titles
+            user_dates[date] = titles
         end
 
-        user_dates.sort_by {|k| k}.reverse
+        response_array = Array.new
+        response_array.push(user_dates)
+        # TODO paginate
     end
 end
