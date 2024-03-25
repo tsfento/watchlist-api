@@ -18,11 +18,11 @@ module WatchDateService
 
         user_dates = Hash.new
 
-        user.watch_dates.each do |d|
+        user.watch_dates.reverse_each do |d|
             date = d.date.strftime("%Y-%m-%d")
             titles = Array.new
 
-            d.user_watch_titles.each do |t|
+            d.user_watch_titles.reverse_each do |t|
                 titles.push(t.watch_title)
             end
 
