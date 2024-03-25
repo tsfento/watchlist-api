@@ -54,6 +54,8 @@ Rails.application.routes.draw do
     # get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
     # add watch date to title for specific user
     post '/:username/add_watch_date', to: 'watch_dates#add_watch_date'
+    # get watch dates for user
+    get '/:username/watch_dates', to: 'watch_dates#get_watch_dates'
   end
   
 

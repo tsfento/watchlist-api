@@ -1,6 +1,12 @@
 class WatchDatesController < ApplicationController
     before_action :authenticate_request
 
+    def get_watch_dates
+        user_watch_dates = WatchDateService.user_watch_dates(@current_user)
+
+        render json: user_watch_dates
+    end
+
     def add_watch_date
         watch_date = WatchDateService.create_watch_date(watch_date_params, watch_title_params, @current_user.id)
 
