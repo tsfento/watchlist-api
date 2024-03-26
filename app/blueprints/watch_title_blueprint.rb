@@ -2,5 +2,5 @@
 
 class WatchTitleBlueprint < Blueprinter::Base
     identifier :id
-    fields :tmdb_id
+    fields :tmdb_id, :title
 end

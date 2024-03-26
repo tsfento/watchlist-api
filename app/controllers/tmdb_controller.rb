@@ -82,4 +82,22 @@ class TmdbController < ApplicationController
 
         render json: response, status: :ok
     end
+
+    def movie_recommendations
+        # https://api.themoviedb.org/3/movie/{movie_id}/recommendations
+        response = RestClient.get("#{@base_url}/movie/#{params[:id]}/recommendations", {
+            Authorization: "Bearer #{@token}"
+        })
+
+        render json: response, status: :ok
+    end
+
+    def tv_recommendations
+        # https://api.themoviedb.org/3/movie/{movie_id}/recommendations
+        response = RestClient.get("#{@base_url}/tv/#{params[:id]}/recommendations", {
+            Authorization: "Bearer #{@token}"
+        })
+
+        render json: response, status: :ok
+    end
 end
