@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_21_211258) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_170201) do
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_211258) do
     t.text "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "rating"
     t.index ["user_id"], name: "index_user_watch_titles_on_user_id"
     t.index ["watch_title_id"], name: "index_user_watch_titles_on_watch_title_id"
   end

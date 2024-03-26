@@ -4,7 +4,7 @@ class UserWatchTitleBlueprint < Blueprinter::Base
     identifier :id
 
     view :normal do
-        fields :watched, :review
+        fields :watched, :review, :rating
         association :watch_title, blueprint: WatchTitleBlueprint
     end
 end
