@@ -14,8 +14,14 @@ class UserWatchTitlesController < ApplicationController
 
     def set_watched
         if @current_user.username == params[:username]
-            watch_title = WatchTitle.find_by(tmdb_id: params[:id])
-            user_watch_title = @current_user.user_watch_titles.find_by(watch_title_id: watch_title.id)
+            # need to create watch_title if none exists yet
+            # watch_title = WatchTitle.find_by(tmdb_id: params[:id])
+            # user_watch_title = @current_user.user_watch_titles.find_by(watch_title_id: watch_title.id)
+            if watch_title = WatchTitle.find_by(tmdb_id: params[:tmdb_id])
+            else
+                watch_title = WatchTitle.create!(watch_title_params)
+            end
+            user_watch_title = UserWatchTitle.find_or_create_by(user_id: @current_user.id, watch_title_id: watch_title.id)
         end
         user_watch_title.watched = !user_watch_title.watched
 
@@ -28,8 +34,15 @@ class UserWatchTitlesController < ApplicationController
 
     def set_rating
         if @current_user.username == params[:username]
-            watch_title = WatchTitle.find_by(tmdb_id: params[:id])
-            user_watch_title = @current_user.user_watch_titles.find_by(watch_title_id: watch_title.id)
+            # need to create watch_title if none exists yet
+            # watch_title = WatchTitle.find_by(tmdb_id: params[:id])
+            # user_watch_title = @current_user.user_watch_titles.find_by(watch_title_id: watch_title.id)
+
+            if watch_title = WatchTitle.find_by(tmdb_id: params[:tmdb_id])
+            else
+                watch_title = WatchTitle.create!(watch_title_params)
+            end
+            user_watch_title = UserWatchTitle.find_or_create_by(user_id: @current_user.id, watch_title_id: watch_title.id)
         end
 
         user_watch_title.rating = params[:rating]
@@ -39,5 +52,11 @@ class UserWatchTitlesController < ApplicationController
         else
             render json: user_watch_title.errors, status: :ok
         end
+    end
+
+    private
+
+    def watch_title_params
+        params.permit(:tmdb_id, :imdb_id, :poster_path, :title, :release_date, :overview, :runtime)
     end
 end

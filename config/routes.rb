@@ -61,9 +61,9 @@ Rails.application.routes.draw do
     # get user_watch_titles for user
     get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
     # set title watched for user
-    get '/:username/:id/set_watched', to: 'user_watch_titles#set_watched'
+    post '/:username/set_watched', to: 'user_watch_titles#set_watched'
     # set rating for title
-    put '/:username/:id/set_rating', to: 'user_watch_titles#set_rating'
+    post '/:username/set_rating', to: 'user_watch_titles#set_rating'
   end
   
 
