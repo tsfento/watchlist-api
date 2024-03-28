@@ -35,22 +35,40 @@ class UsersController < ApplicationController
     # user lists
 
     def lists_index
-        render json: @user.watch_lists,
+        page = params.fetch(:page, 1).to_i
+        per_page = 20
+        offset = (page - 1) * per_page
+
+        watch_lists = @user.watch_lists.offset(offset).limit(per_page)
+
+        render json: watch_lists,
         include: [:user => {only: :username}],
         methods: [:watch_titles_count, :poster_imgs],
         status: :ok
     end
 
     def followed_lists_index
-        render json: WatchList.joins(:watch_list_followers).where(:watch_list_followers => {:user_id => @user.id}),
+        page = params.fetch(:page, 1).to_i
+        per_page = 20
+        offset = (page - 1) * per_page
+
+        followed_lists = WatchList.joins(:watch_list_followers).where(:watch_list_followers => {:user_id => @user.id})
+
+        followed_lists = followed_lists.offset(offset).limit(per_page)
+
+        render json: followed_lists,
         include: [:user => {only: :username}],
         methods: [:watch_titles_count, :poster_imgs],
         status: :ok
     end
 
     def titles_show
+        page = params.fetch(:page, 1).to_i
+        per_page = 20
+        offset = (page - 1) * per_page
+
         list = @user.watch_lists.find(params[:id])
-        titles = list.watch_titles
+        titles = list.watch_titles.offset(offset).limit(per_page)
 
         render json: titles, status: :ok
 

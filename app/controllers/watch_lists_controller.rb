@@ -2,9 +2,15 @@ class WatchListsController < ApplicationController
     before_action :authenticate_request, only: [:create, :follow_list, :unfollow_list]
 
     def index
+        page = params.fetch(:page, 1).to_i
+        per_page = 20
+        offset = (page - 1) * per_page
+
         # watch_lists = WatchList.all.where(private: false)
         # below excludes lists with no titles
         watch_lists = WatchList.all.where(private: false).where.associated(:watch_titles).distinct
+
+        watch_lists = watch_lists.offset(offset).limit(per_page)
 
         render json: watch_lists,
             include: [:user => {only: :username}],
