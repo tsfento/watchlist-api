@@ -13,7 +13,7 @@ class WatchList < ApplicationRecord
   end
 
   def poster_imgs
-    title_posters = watch_titles.all.sample(15).map do |title|
+    title_posters = watch_titles.all.sample(8).map do |title|
       title.poster_path
     end
   end
