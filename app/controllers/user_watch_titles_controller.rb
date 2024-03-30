@@ -16,21 +16,6 @@ class UserWatchTitlesController < ApplicationController
         end
     end
 
-    def update_user_watch_titles
-        if @current_user.username == params[:username]
-        
-            user_watch_title = @current_user.user_watch_titles.last
-
-            if user_watch_title
-                render json: UserWatchTitleBlueprint.render(user_watch_title, view: :normal), status: :ok
-            else
-                render json user_watch_title.errors, status: :ok
-            end
-        else
-            render json: { error: 'Unauthorized' }, status: :unauthorized
-        end
-    end
-
     def set_watched
         if @current_user.username == params[:username]
             # need to create watch_title if none exists yet
@@ -40,7 +25,7 @@ class UserWatchTitlesController < ApplicationController
         user_watch_title.watched = !user_watch_title.watched
 
         if user_watch_title.save
-            render json: user_watch_title, status: :ok
+            render json: UserWatchTitleBlueprint.render(user_watch_title, view: :normal), status: :ok
         else
             render json: user_watch_title.errors, status: :ok
         end
@@ -56,7 +41,7 @@ class UserWatchTitlesController < ApplicationController
         user_watch_title.rating = params[:rating]
 
         if user_watch_title.save
-            render json: user_watch_title, status: :ok
+            render json: UserWatchTitleBlueprint.render(user_watch_title, view: :normal), status: :ok
         else
             render json: user_watch_title.errors, status: :ok
         end

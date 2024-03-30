@@ -60,8 +60,6 @@ Rails.application.routes.draw do
     get '/:username/watch_dates', to: 'watch_dates#get_watch_dates'
     # get user_watch_titles for user
     get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
-    # get new user_watch_titles
-    get '/:username/update_user_watch_titles', to: 'user_watch_titles#update_user_watch_titles'
     # set title watched for user
     post '/:username/set_watched', to: 'user_watch_titles#set_watched'
     # set rating for title
