@@ -68,7 +68,8 @@ class UsersController < ApplicationController
         offset = (page - 1) * per_page
 
         list = @user.watch_lists.find(params[:id])
-        titles = list.watch_titles.offset(offset).limit(per_page)
+        # titles = list.watch_titles.offset(offset).limit(per_page)
+        titles = list.watch_titles[offset, per_page]
 
         render json: titles, status: :ok
 

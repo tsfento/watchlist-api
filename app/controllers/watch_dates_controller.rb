@@ -2,9 +2,16 @@ class WatchDatesController < ApplicationController
     before_action :authenticate_request
 
     def get_watch_dates
+        # TODO paginate
         user_watch_dates = WatchDateService.user_watch_dates(@current_user)
 
         render json: user_watch_dates
+    end
+
+    def search_watch_date
+        watch_date = WatchDateService.search_watch_date(params)
+
+        render json: watch_date
     end
 
     def add_watch_date

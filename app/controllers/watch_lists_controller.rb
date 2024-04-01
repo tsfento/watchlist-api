@@ -37,14 +37,14 @@ class WatchListsController < ApplicationController
         watch_list = WatchList.find(params[:id])
         search = params[:search]
 
-        watch_titles = watch_list.watch_titles.offset(offset).limit(per_page)
-        
-        titles = watch_titles.select { |f| ['title', 'overview'].any? { |t| f[t].downcase.include? search.downcase } }
+        watch_titles = watch_list.watch_titles.select { |f| ['title', 'overview'].any? { |t| f[t].downcase.include? search.downcase } }
+
+        titles = watch_titles[offset, per_page]
 
         if titles
             render json: titles, status: :ok
         else
-            render json: titles.errors, status: :unprocessable_entity
+            render json: { error: 'No results' }, status: :unprocessable_entity
         end
     end
 

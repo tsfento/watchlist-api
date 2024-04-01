@@ -33,4 +33,26 @@ module WatchDateService
         response_array.push(user_dates)
         # TODO paginate
     end
+
+    def self.search_watch_date(params)
+        user = User.find_by(username: params[:username])
+
+        result_date = Hash.new
+
+        user_date = user.watch_dates.where(date: params[:date])
+        if user_date.count != 0
+            titles = Array.new
+
+            user_date.first.user_watch_titles.reverse_each do |t|
+                titles.push(t.watch_title)
+            end
+
+            result_date[params[:date]] = titles
+
+            response_array = Array.new
+            response_array.push(result_date)
+        else
+            user_date
+        end
+    end
 end
