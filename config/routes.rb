@@ -69,6 +69,10 @@ Rails.application.routes.draw do
 
   # url.com/lists
   get '/lists', to: 'watch_lists#index'
+  # search lists
+  post '/lists/:id/search', to: 'watch_lists#search_list'
+  # get random title from list
+  get '/lists/:id/random', to: 'watch_lists#random_title'
 
   # url.com/addtitle
   # post '/add_title', to: 'watch_titles#create'

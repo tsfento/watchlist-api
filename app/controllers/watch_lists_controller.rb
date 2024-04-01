@@ -28,6 +28,38 @@ class WatchListsController < ApplicationController
         end
     end
 
+    def search_list
+        # WatchList.select { |w| w['title'].include? '5' }
+        page = params[:page].to_i
+        per_page = 20
+        offset = (page - 1) * per_page
+        
+        watch_list = WatchList.find(params[:id])
+        search = params[:search]
+
+        watch_titles = watch_list.watch_titles.offset(offset).limit(per_page)
+        
+        titles = watch_titles.select { |f| ['title', 'overview'].any? { |t| f[t].downcase.include? search.downcase } }
+
+        if titles
+            render json: titles, status: :ok
+        else
+            render json: titles.errors, status: :unprocessable_entity
+        end
+    end
+
+    def random_title
+        watch_list = WatchList.find(params[:id])
+
+        watch_title = watch_list.watch_titles.sample
+
+        if watch_title
+            render json: watch_title, status: :ok
+        else
+            render json: watch_title.errors, status: :unprocessable_entity
+        end
+    end
+
     def follow_list
         # watch_list = WatchList.find(params[:id])
         follow = WatchListFollower.new(user_id: @current_user.id, watch_list_id: params[:id])
