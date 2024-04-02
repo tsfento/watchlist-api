@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_26_170201) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_164209) do
+  create_table "daily_quotes", force: :cascade do |t|
+    t.datetime "date", default: "2024-04-02 00:00:00", null: false
+    t.string "quote", null: false
+    t.integer "watch_title_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["watch_title_id"], name: "index_daily_quotes_on_watch_title_id"
+  end
+
   create_table "user_watch_titles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "watch_title_id", null: false
@@ -81,6 +90,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_170201) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "daily_quotes", "watch_titles"
   add_foreign_key "user_watch_titles", "users"
   add_foreign_key "user_watch_titles", "watch_titles"
   add_foreign_key "watch_list_followers", "users"

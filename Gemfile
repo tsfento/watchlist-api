@@ -37,7 +37,7 @@ gem "rack-cors"
 gem 'bcrypt'
 gem 'jwt'
 gem 'blueprinter'
-gem 'kaminari'
+# gem 'kaminari'
 gem 'rest-client'
 
 group :production do

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # url.com/login
   post '/login', to: 'sessions#create'
 
+  # get daily quote
+  get '/quote', to: 'daily_quotes#get_quote'
+
   scope '/tmdb' do
     get '/now_playing_movies', to: 'tmdb#now_playing_movies'
     get '/popular_movies', to: 'tmdb#popular_movies'

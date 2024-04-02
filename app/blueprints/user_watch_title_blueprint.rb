@@ -5,6 +5,6 @@ class UserWatchTitleBlueprint < Blueprinter::Base
 
     view :normal do
         fields :watched, :review, :rating
-        association :watch_title, blueprint: WatchTitleBlueprint
+        association :watch_title, blueprint: WatchTitleBlueprint, view: :short
     end
 end
