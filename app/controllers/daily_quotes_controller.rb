@@ -1,12 +1,11 @@
 class DailyQuotesController < ApplicationController
     def get_quote
-        # TODO replace with Date.today.strftime("%Y-%m-%d")
-        quote = DailyQuote.where(date: '2024-04-02')
+        quote = DailyQuote.where(date: Date.today.strftime("%Y-%m-%d"))
 
-        if quote
-            render json: DailyQuoteBlueprint.render(quote, view: :normal), status: :ok
-        else
-            render json: quote.errors, status: :unprocessable_entity
+        if quote.empty?
+            quote = [DailyQuote.all.sample]
         end
+
+        render json: DailyQuoteBlueprint.render(quote, view: :normal), status: :ok
     end
 end
