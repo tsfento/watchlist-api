@@ -17,11 +17,13 @@ class WatchDatesController < ApplicationController
     def add_watch_date
         watch_date = WatchDateService.create_watch_date(watch_date_params, watch_title_params, @current_user.id)
 
-        if watch_date.valid?
-            render json: watch_date, status: :created
-        else
-            render json: watch_date.errors, status: :unprocessable_entity
-        end
+        render json: watch_date
+
+        # if watch_date.valid?
+        #     render json: watch_date, status: :created
+        # else
+        #     render json: watch_date.errors, status: :unprocessable_entity
+        # end
     end
 
     private
