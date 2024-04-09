@@ -34,7 +34,7 @@ class UserWatchTitlesController < ApplicationController
     def set_rating
         if @current_user.username == params[:username]
             # need to create watch_title if none exists yet
-            watch_title = WatchTitle.create_with(watch_title_params).find_or_create_by(tmdb_id: params[:tmdb_id])
+            watch_title = WatchTitle.create_with(watch_title_params).find_or_create_by!(tmdb_id: params[:tmdb_id])
             user_watch_title = UserWatchTitle.find_or_create_by(user_id: @current_user.id, watch_title_id: watch_title.id)
         end
 
@@ -50,6 +50,6 @@ class UserWatchTitlesController < ApplicationController
     private
 
     def watch_title_params
-        params.permit(:tmdb_id, :imdb_id, :poster_path, :title, :release_date, :overview, :runtime)
+        params.permit(:tmdb_id, :imdb_id, :poster_path, :title, :release_date, :overview, :runtime, :content_type)
     end
 end

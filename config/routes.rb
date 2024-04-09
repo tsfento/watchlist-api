@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get '/tv/details/:id', to: 'tmdb#tv_details'
     post '/search', to: 'tmdb#search_tmdb'
     get '/movie/:id/recommendations', to: 'tmdb#movie_recommendations'
-    get '/tv/:id/recommendations', to: 'tmdb#rv_recommendations'
+    get '/tv/:id/recommendations', to: 'tmdb#tv_recommendations'
   end
 
   scope '/users' do

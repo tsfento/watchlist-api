@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_164209) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_162536) do
   create_table "daily_quotes", force: :cascade do |t|
     t.datetime "date", default: "2024-04-02 00:00:00", null: false
     t.string "quote", null: false
@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_164209) do
     t.integer "runtime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content_type", default: "movie", null: false
   end
 
   add_foreign_key "daily_quotes", "watch_titles"

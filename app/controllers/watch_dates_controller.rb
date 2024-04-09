@@ -33,6 +33,6 @@ class WatchDatesController < ApplicationController
     end
 
     def watch_title_params
-        params.permit(:tmdb_id, :imdb_id, :poster_path, :title, :release_date, :overview, :runtime)
+        params.permit(:tmdb_id, :imdb_id, :poster_path, :title, :release_date, :overview, :runtime, :content_type)
     end
 end
