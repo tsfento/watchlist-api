@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   scope '/tmdb' do
     get '/now_playing_movies', to: 'tmdb#now_playing_movies'
     get '/popular_movies', to: 'tmdb#popular_movies'
-    get '/popular_tv', to: 'tmdb#popular_tv'
-    get '/top_rated_tv', to: 'tmdb#top_rated_tv'
+    get '/trending_tv', to: 'tmdb#trending_tv'
+    get '/this_week_tv', to: 'tmdb#this_week_tv'
     get '/movie/details/:id', to: 'tmdb#movie_details'
     get '/tv/details/:id', to: 'tmdb#tv_details'
     post '/search', to: 'tmdb#search_tmdb'
