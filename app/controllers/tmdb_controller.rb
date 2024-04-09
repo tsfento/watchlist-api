@@ -68,6 +68,7 @@ class TmdbController < ApplicationController
     end
 
     def tv_details
+        puts 'TVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTVTV'
         response = RestClient.get("#{@base_url}/tv/#{params[:id]}?language=en-US", {
             Authorization: "Bearer #{@token}"
         })
