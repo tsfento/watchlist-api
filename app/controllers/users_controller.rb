@@ -35,11 +35,15 @@ class UsersController < ApplicationController
     # user lists
 
     def lists_index
-        page = params.fetch(:page, 1).to_i
-        per_page = 20
-        offset = (page - 1) * per_page
+        if params[:page].to_i == -1
+            watch_lists = @user.watch_lists
+        else
+            page = params.fetch(:page, 1).to_i
+            per_page = 20
+            offset = (page - 1) * per_page
 
-        watch_lists = @user.watch_lists.offset(offset).limit(per_page)
+            watch_lists = @user.watch_lists.offset(offset).limit(per_page)
+        end
 
         render json: watch_lists,
         include: [:user => {only: :username}],
