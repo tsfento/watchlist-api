@@ -18,12 +18,14 @@ class WatchDatesController < ApplicationController
         watch_date = WatchDateService.create_watch_date(watch_date_params, watch_title_params, @current_user.id)
 
         render json: watch_date
+    end
 
-        # if watch_date.valid?
-        #     render json: watch_date, status: :created
-        # else
-        #     render json: watch_date.errors, status: :unprocessable_entity
-        # end
+    def delete_watch_date
+        if @current_user.username == params[:username]
+            watch_date = WatchDateService.delete_watch_date(@current_user.username, params[:tmdb_id], params[:date])
+        end
+
+        render json: watch_date
     end
 
     private

@@ -11,8 +11,16 @@ module WatchDateService
         watch_date
     end
 
-    def self.delete_watch_date
-        # watch_date = 
+    def self.delete_watch_date(username, tmdb_id, date)
+        # User.first.user_watch_titles.first.watch_dates.delete(8)
+
+        user = User.find_by(username: username)
+        watch_title = WatchTitle.find_by(tmdb_id: tmdb_id)
+        user_watch_title = user.user_watch_titles.find_by(watch_title_id: watch_title.id)
+        watch_date = user_watch_title.watch_dates.find_by(date: date)
+        user_watch_title.watch_dates.delete(watch_date)
+
+        watch_date
     end
 
     def self.user_watch_dates(params)
