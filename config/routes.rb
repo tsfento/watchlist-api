@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     # delete a title from a list
     delete '/:username/lists/:id/:tmdb_id', to: 'watch_titles#delete_title'
     # get user_watch_titles for a specific user
+    # refactored to send with user bootstrap
     # get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
     # add watch date to title for specific user
     post '/:username/add_watch_date', to: 'watch_dates#add_watch_date'
@@ -63,12 +64,12 @@ Rails.application.routes.draw do
     get '/:username/watch_dates', to: 'watch_dates#get_watch_dates'
     # get specific watch date for user
     post '/:username/watch_date', to: 'watch_dates#search_watch_date'
-    # get user_watch_titles for user
-    # get '/:username/user_watch_titles', to: 'user_watch_titles#get_user_watch_titles'
     # set title watched for user
     post '/:username/set_watched', to: 'user_watch_titles#set_watched'
     # set rating for title
     post '/:username/set_rating', to: 'user_watch_titles#set_rating'
+    # set privacy for a list
+    get '/:username/:id/set_privacy', to: 'watch_lists#set_privacy'
   end
   
 

@@ -11,6 +11,10 @@ module WatchDateService
         watch_date
     end
 
+    def self.delete_watch_date
+        # watch_date = 
+    end
+
     def self.user_watch_dates(params)
         user = User.find_by(username: params[:username])
 

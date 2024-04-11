@@ -1,5 +1,5 @@
 class WatchListsController < ApplicationController
-    before_action :authenticate_request, only: [:create, :follow_list, :unfollow_list]
+    before_action :authenticate_request, only: [:create, :follow_list, :unfollow_list, :set_privacy]
 
     def index
         page = params.fetch(:page, 1).to_i
@@ -78,6 +78,19 @@ class WatchListsController < ApplicationController
             render json: nil, status: :ok
         else
             render json: follow.errors, status: :unprocessable_entity
+        end
+    end
+
+    def set_privacy
+        if @current_user.username == params[:username]
+            list = @current_user.watch_lists.find(params[:id])
+        end
+        list.private = !list.private
+
+        if list.save
+            render json: list, status: :ok
+        else
+            render json: list.errors, status: :unprocessable_entity
         end
     end
 

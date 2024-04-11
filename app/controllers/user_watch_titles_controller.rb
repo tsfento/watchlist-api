@@ -27,7 +27,7 @@ class UserWatchTitlesController < ApplicationController
         if user_watch_title.save
             render json: UserWatchTitleBlueprint.render(user_watch_title, view: :normal), status: :ok
         else
-            render json: user_watch_title.errors, status: :ok
+            render json: user_watch_title.errors, status: :unprocessable_entity
         end
     end
 
