@@ -22,7 +22,10 @@ class WatchListsController < ApplicationController
         watch_list = @current_user.watch_lists.new(watch_list_params)
 
         if watch_list.save
-            render json: watch_list, status: :created
+            render json: watch_list,
+            include: [:user => {only: :username}],
+            methods: [:watch_titles_count, :poster_imgs],
+            status: :created
         else
             render json: watch_list.errors, status: :unprocessable_entity
         end

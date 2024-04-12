@@ -15,10 +15,10 @@ class User < ApplicationRecord
     }, on: :create
     validates :password_confirmation, presence: true, length: { minimum: 8 }, on: :create
 
-    has_many :user_watch_titles
+    has_many :user_watch_titles, dependent: :destroy
     has_many :watch_titles, through: :user_watch_titles
 
-    has_many :watch_lists
+    has_many :watch_lists, dependent: :destroy
     has_many :watch_list_followers
     has_many :watch_dates, through: :user_watch_titles
 

@@ -28,19 +28,25 @@ module WatchDateService
 
         user_dates = Hash.new
 
-        user.watch_dates.reverse_each do |d|
-            date = d.date.strftime("%Y-%m-%d")
-            titles = Array.new
+        if user.watch_dates.length > 0
+            user.watch_dates.reverse_each do |d|
+                date = d.date.strftime("%Y-%m-%d")
+                titles = Array.new
 
-            d.user_watch_titles.reverse_each do |t|
-                titles.push(t.watch_title)
+                d.user_watch_titles.reverse_each do |t|
+                    titles.push(t.watch_title)
+                end
+
+                user_dates[date] = titles
             end
 
-            user_dates[date] = titles
+            response_array = Array.new
+            response_array.push(user_dates)
+        else
+            response_array = Array.new
         end
-
-        response_array = Array.new
-        response_array.push(user_dates)
+        
+        response_array
         # TODO paginate
     end
 
