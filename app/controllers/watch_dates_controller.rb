@@ -14,6 +14,12 @@ class WatchDatesController < ApplicationController
         render json: watch_date
     end
 
+    def search_title_dates
+        title_watch_dates = WatchDateService.search_title_dates(params)
+
+        render json: title_watch_dates
+    end
+
     def add_watch_date
         watch_date = WatchDateService.create_watch_date(watch_date_params, watch_title_params, @current_user.id)
 
