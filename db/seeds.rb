@@ -42,7 +42,7 @@ dune = WatchTitle.create_with(
     runtime: 137
 ).find_or_create_by(tmdb_id: 841)
 
-DailyQuote.find_or_create_by(date: '2024-04-19', quote: "And how can this be? For he is the Kwisatz Haderach!", watch_title_id: dune84.id)
+DailyQuote.find_or_create_by(date: '2024-04-19', quote: "And how can this be? For he is the Kwisatz Haderach!", watch_title_id: dune.id)
 
 back_school = WatchTitle.create_with(
     tmdb_id: 15596,
