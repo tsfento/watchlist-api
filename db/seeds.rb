@@ -9,8 +9,8 @@
 #   end
 
 UserWatchTitle.destroy_all
-WatchTitle.destroy_all
 DailyQuote.destroy_all
+WatchTitle.destroy_all
 
 burbs = WatchTitle.create_with(
     tmdb_id: 11974,
