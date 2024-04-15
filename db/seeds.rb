@@ -52,7 +52,7 @@ back_school = WatchTitle.create_with(
     release_date: "1986-06-13",
     overview: "Self-made millionaire Thornton Melon decides to get a better education and enrolls at his son Jason's college. While Jason tries to fit in with his fellow students, Thornton struggles to gain his son's respect, giving way to hilarious antics.",
     runtime: 96
-).find_or_create_by(tmdb_id:)
+).find_or_create_by(tmdb_id: 15596)
 
 DailyQuote.find_or_create_by(date: '2024-04-20', quote: "Lay off Vanessa. She gives great headache.", watch_title_id: back_school.id)
 
@@ -64,7 +64,7 @@ buckaroo = WatchTitle.create_with(
     release_date: "1984-08-15",
     overview: "Adventurer/surgeon/rock musician Buckaroo Banzai and his band of men, the Hong Kong Cavaliers, take on evil alien invaders from the 8th dimension.",
     runtime: 103
-).find_or_create_by(tmdb_id:)
+).find_or_create_by(tmdb_id: 11379)
 
 DailyQuote.find_or_create_by(date: '2024-04-21', quote: "Why is there a watermelon there?", watch_title_id: bucakaroo.id)
 
@@ -76,7 +76,7 @@ thirteenth_warrior = WatchTitle.create_with(
     release_date: "1999-08-13",
     overview: "A Muslim ambassador exiled from his homeland, Ahmad ibn Fadlan finds himself in the company of Vikings. While the behavior of the Norsemen initially offends ibn Fadlan, the more cultured outsider grows to respect the tough, if uncouth, warriors. During their travels together, ibn Fadlan and the Vikings get word of an evil presence closing in, and they must fight the frightening and formidable force, which was previously thought to exist only in legend.",
     runtime: 102
-).find_or_create_by(tmdb_id:)
+).find_or_create_by(tmdb_id: 1911)
 
 DailyQuote.find_or_create_by(date: '2024-04-22', quote: "It's all right, little brother... there are more!", watch_title_id: thirteenth_warrior.id)
 
@@ -88,7 +88,7 @@ fugitive = WatchTitle.create_with(
     release_date: "1993-08-06",
     overview: "Wrongfully convicted of murdering his wife and sentenced to death, Richard Kimble escapes from the law in an attempt to find the real killer and clear his name.",
     runtime: 131
-).find_or_create_by(tmdb_id:)
+).find_or_create_by(tmdb_id: 5503)
 
 DailyQuote.find_or_create_by(date: '2024-04-23', quote: "Well, we say hinky.", watch_title_id: fugitive.id)
 
@@ -100,7 +100,7 @@ wizard = WatchTitle.create_with(
     release_date: "1989-12-15",
     overview: "A boy and his brother run away from home and hitch cross-country, with help from a girl they meet, to compete in the ultimate video-game championship.",
     runtime: 100
-).find_or_create_by(tmdb_id:)
+).find_or_create_by(tmdb_id: 183)
 
 DailyQuote.find_or_create_by(date: '2024-04-24', quote: "50,000? You got 50,000 on Double Dragon?", watch_title_id: wizard.id)
 
@@ -282,6 +282,6 @@ DailyQuote.find_or_create_by(date: '2024-04-24', quote: "50,000? You got 50,000 
 #     release_date: "2002-10-31",
 #     overview: "Twenty-eight days after a killer virus was accidentally unleashed from a British research facility, a small group of London survivors are caught in a desperate struggle to protect themselves from the infected. Carried by animals and humans, the virus turns those it infects into homicidal maniacs -- and it's absolutely impossible to contain.",
 #     runtime: 113
-# ).find_or_create_by(tmdb_id:)
+# ).find_or_create_by(tmdb_id: 170)
 
 # DailyQuote.find_or_create_by(date: '2024-10-15', quote: "No, see, this is a really shit idea. You know why? Because it's really obviously a shit idea.", watch_title_id: days_later.id)
