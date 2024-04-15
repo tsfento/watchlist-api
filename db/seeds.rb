@@ -66,7 +66,7 @@ buckaroo = WatchTitle.create_with(
     runtime: 103
 ).find_or_create_by(tmdb_id: 11379)
 
-DailyQuote.find_or_create_by(date: '2024-04-21', quote: "Why is there a watermelon there?", watch_title_id: bucakaroo.id)
+DailyQuote.find_or_create_by(date: '2024-04-21', quote: "Why is there a watermelon there?", watch_title_id: buckaroo.id)
 
 thirteenth_warrior = WatchTitle.create_with(
     tmdb_id: 1911,
