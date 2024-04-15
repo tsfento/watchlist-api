@@ -8,15 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-UserWatchTitle.all do |u|
-    u.destroy
-end
-WatchTitle.all do |w|
-    w.destroy
-end
-DailyQuote.all do |d|
-    d.destroy
-end
+UserWatchTitle.destroy_all
+WatchTitle.destroy_all
+DailyQuote.destroy_all
 
 burbs = WatchTitle.create_with(
     tmdb_id: 11974,
