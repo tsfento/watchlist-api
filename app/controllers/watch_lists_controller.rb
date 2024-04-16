@@ -21,6 +21,8 @@ class WatchListsController < ApplicationController
     def create
         watch_list = @current_user.watch_lists.new(watch_list_params)
 
+        puts watch_list.title
+
         if watch_list.save
             render json: watch_list,
             include: [:user => {only: :username}],

@@ -8,95 +8,97 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-UserWatchTitle.destroy_all
-DailyQuote.destroy_all
-WatchTitle.destroy_all
+# UserWatchTitle.destroy_all
+# DailyQuote.destroy_all
+# WatchTitle.destroy_all
 
-burbs = WatchTitle.create_with(
-    tmdb_id: 11974,
-    imdb_id: "tt0096734",
-    poster_path: "/vrVPAcv2njVdnkqhBwGBc7UxCjz.jpg",
-    title: "The 'Burbs",
-    release_date: "1989-02-17",
-    overview: "When secretive new neighbors move in next door, suburbanite Ray Peterson and his friends let their paranoia get the best of them as they start to suspect the newcomers of evildoings and commence an investigation. But it's hardly how Ray, who much prefers drinking beer, reading his newspaper and watching a ball game on the tube expected to spend his vacation.",
-    runtime: 102
-).find_or_create_by(tmdb_id: 11974)
+# burbs = WatchTitle.create_with(
+#     tmdb_id: 11974,
+#     imdb_id: "tt0096734",
+#     poster_path: "/vrVPAcv2njVdnkqhBwGBc7UxCjz.jpg",
+#     title: "The 'Burbs",
+#     release_date: "1989-02-17",
+#     overview: "When secretive new neighbors move in next door, suburbanite Ray Peterson and his friends let their paranoia get the best of them as they start to suspect the newcomers of evildoings and commence an investigation. But it's hardly how Ray, who much prefers drinking beer, reading his newspaper and watching a ball game on the tube expected to spend his vacation.",
+#     runtime: 102
+# ).find_or_create_by(tmdb_id: 11974)
 
-DailyQuote.find_or_create_by(date: '2024-04-18', quote: "I've never seen that. I've never seen anybody drive their garbage down to the street and bang the hell out of it with a stick. I-I've never seen that.", watch_title_id: burbs.id)
+# DailyQuote.find_or_create_by(date: '2024-04-18', quote: "I've never seen that. I've never seen anybody drive their garbage down to the street and bang the hell out of it with a stick. I-I've never seen that.", watch_title_id: burbs.id)
 
-DailyQuote.find_or_create_by(date: '2024-07-13', quote: "A thermostat on a home furnace; is that supposed to go to 5,000 degrees, you think?", watch_title_id: burbs.id)
+# DailyQuote.find_or_create_by(date: '2024-07-13', quote: "A thermostat on a home furnace; is that supposed to go to 5,000 degrees, you think?", watch_title_id: burbs.id)
 
-dune = WatchTitle.create_with(
-    tmdb_id: 841,
-    imdb_id: "tt0087182",
-    poster_path: "/9jE1U4vzlZQMvfbKWq5fj00iJBw.jpg",
-    title: "Dune",
-    release_date: "1984-12-14",
-    overview: "In the year 10,191, the most precious substance in the universe is the spice Melange. The spice extends life. The spice expands consciousness. The spice is vital to space travel.  The spice exists on only one planet in the entire universe, the vast desert planet Arrakis, also known as Dune.  Its native inhabitants, the Fremen, have long held a prophecy that a man would come, a messiah who would lead them to true freedom.",
-    runtime: 137
-).find_or_create_by(tmdb_id: 841)
+# dune = WatchTitle.create_with(
+#     tmdb_id: 841,
+#     imdb_id: "tt0087182",
+#     poster_path: "/9jE1U4vzlZQMvfbKWq5fj00iJBw.jpg",
+#     title: "Dune",
+#     release_date: "1984-12-14",
+#     overview: "In the year 10,191, the most precious substance in the universe is the spice Melange. The spice extends life. The spice expands consciousness. The spice is vital to space travel.  The spice exists on only one planet in the entire universe, the vast desert planet Arrakis, also known as Dune.  Its native inhabitants, the Fremen, have long held a prophecy that a man would come, a messiah who would lead them to true freedom.",
+#     runtime: 137
+# ).find_or_create_by(tmdb_id: 841)
 
-DailyQuote.find_or_create_by(date: '2024-04-19', quote: "And how can this be? For he is the Kwisatz Haderach!", watch_title_id: dune.id)
+# DailyQuote.find_or_create_by(date: '2024-04-19', quote: "And how can this be? For he is the Kwisatz Haderach!", watch_title_id: dune.id)
 
-back_school = WatchTitle.create_with(
-    tmdb_id: 15596,
-    imdb_id: "tt0090685",
-    poster_path: "/bIQH3dptGaMBtwos7j9lEHt65BV.jpg",
-    title: "Back to School",
-    release_date: "1986-06-13",
-    overview: "Self-made millionaire Thornton Melon decides to get a better education and enrolls at his son Jason's college. While Jason tries to fit in with his fellow students, Thornton struggles to gain his son's respect, giving way to hilarious antics.",
-    runtime: 96
-).find_or_create_by(tmdb_id: 15596)
+# back_school = WatchTitle.create_with(
+#     tmdb_id: 15596,
+#     imdb_id: "tt0090685",
+#     poster_path: "/bIQH3dptGaMBtwos7j9lEHt65BV.jpg",
+#     title: "Back to School",
+#     release_date: "1986-06-13",
+#     overview: "Self-made millionaire Thornton Melon decides to get a better education and enrolls at his son Jason's college. While Jason tries to fit in with his fellow students, Thornton struggles to gain his son's respect, giving way to hilarious antics.",
+#     runtime: 96
+# ).find_or_create_by(tmdb_id: 15596)
 
-DailyQuote.find_or_create_by(date: '2024-04-20', quote: "Lay off Vanessa. She gives great headache.", watch_title_id: back_school.id)
+# DailyQuote.find_or_create_by(date: '2024-04-20', quote: "Lay off Vanessa. She gives great headache.", watch_title_id: back_school.id)
 
-buckaroo = WatchTitle.create_with(
-    tmdb_id: 11379,
-    imdb_id: "tt0086856",
-    poster_path: "/a7K5OcylQbWtCbrUzegfi31yaSs.jpg",
-    title: "The Adventures of Buckaroo Banzai Across the 8th Dimension",
-    release_date: "1984-08-15",
-    overview: "Adventurer/surgeon/rock musician Buckaroo Banzai and his band of men, the Hong Kong Cavaliers, take on evil alien invaders from the 8th dimension.",
-    runtime: 103
-).find_or_create_by(tmdb_id: 11379)
+# buckaroo = WatchTitle.create_with(
+#     tmdb_id: 11379,
+#     imdb_id: "tt0086856",
+#     poster_path: "/a7K5OcylQbWtCbrUzegfi31yaSs.jpg",
+#     title: "The Adventures of Buckaroo Banzai Across the 8th Dimension",
+#     release_date: "1984-08-15",
+#     overview: "Adventurer/surgeon/rock musician Buckaroo Banzai and his band of men, the Hong Kong Cavaliers, take on evil alien invaders from the 8th dimension.",
+#     runtime: 103
+# ).find_or_create_by(tmdb_id: 11379)
 
-DailyQuote.find_or_create_by(date: '2024-04-21', quote: "Why is there a watermelon there?", watch_title_id: buckaroo.id)
+# DailyQuote.find_or_create_by(date: '2024-04-21', quote: "Why is there a watermelon there?", watch_title_id: buckaroo.id)
 
-thirteenth_warrior = WatchTitle.create_with(
-    tmdb_id: 1911,
-    imdb_id: "tt0120657",
-    poster_path: "/rinf4I01FLwUKoXvcZV45QrWmAw.jpg",
-    title: "The 13th Warrior",
-    release_date: "1999-08-13",
-    overview: "A Muslim ambassador exiled from his homeland, Ahmad ibn Fadlan finds himself in the company of Vikings. While the behavior of the Norsemen initially offends ibn Fadlan, the more cultured outsider grows to respect the tough, if uncouth, warriors. During their travels together, ibn Fadlan and the Vikings get word of an evil presence closing in, and they must fight the frightening and formidable force, which was previously thought to exist only in legend.",
-    runtime: 102
-).find_or_create_by(tmdb_id: 1911)
+# thirteenth_warrior = WatchTitle.create_with(
+#     tmdb_id: 1911,
+#     imdb_id: "tt0120657",
+#     poster_path: "/rinf4I01FLwUKoXvcZV45QrWmAw.jpg",
+#     title: "The 13th Warrior",
+#     release_date: "1999-08-13",
+#     overview: "A Muslim ambassador exiled from his homeland, Ahmad ibn Fadlan finds himself in the company of Vikings. While the behavior of the Norsemen initially offends ibn Fadlan, the more cultured outsider grows to respect the tough, if uncouth, warriors. During their travels together, ibn Fadlan and the Vikings get word of an evil presence closing in, and they must fight the frightening and formidable force, which was previously thought to exist only in legend.",
+#     runtime: 102
+# ).find_or_create_by(tmdb_id: 1911)
 
-DailyQuote.find_or_create_by(date: '2024-04-22', quote: "It's all right, little brother... there are more!", watch_title_id: thirteenth_warrior.id)
+# DailyQuote.find_or_create_by(date: '2024-04-22', quote: "It's all right, little brother... there are more!", watch_title_id: thirteenth_warrior.id)
 
-fugitive = WatchTitle.create_with(
-    tmdb_id: 5503,
-    imdb_id: "tt0106977",
-    poster_path: "/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg",
-    title: "The Fugitive",
-    release_date: "1993-08-06",
-    overview: "Wrongfully convicted of murdering his wife and sentenced to death, Richard Kimble escapes from the law in an attempt to find the real killer and clear his name.",
-    runtime: 131
-).find_or_create_by(tmdb_id: 5503)
+# fugitive = WatchTitle.create_with(
+#     tmdb_id: 5503,
+#     imdb_id: "tt0106977",
+#     poster_path: "/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg",
+#     title: "The Fugitive",
+#     release_date: "1993-08-06",
+#     overview: "Wrongfully convicted of murdering his wife and sentenced to death, Richard Kimble escapes from the law in an attempt to find the real killer and clear his name.",
+#     runtime: 131
+# ).find_or_create_by(tmdb_id: 5503)
 
-DailyQuote.find_or_create_by(date: '2024-04-23', quote: "Well, we say hinky.", watch_title_id: fugitive.id)
+# DailyQuote.find_or_create_by(date: '2024-04-23', quote: "Well, we say hinky.", watch_title_id: fugitive.id)
 
-wizard = WatchTitle.create_with(
-    tmdb_id: 183,
-    imdb_id: "tt0098663",
-    poster_path: "/dtgNNq3TBbpBX6RXHLt5gAMdwPV.jpg",
-    title: "The Wizard",
-    release_date: "1989-12-15",
-    overview: "A boy and his brother run away from home and hitch cross-country, with help from a girl they meet, to compete in the ultimate video-game championship.",
-    runtime: 100
-).find_or_create_by(tmdb_id: 183)
+# wizard = WatchTitle.create_with(
+#     tmdb_id: 183,
+#     imdb_id: "tt0098663",
+#     poster_path: "/dtgNNq3TBbpBX6RXHLt5gAMdwPV.jpg",
+#     title: "The Wizard",
+#     release_date: "1989-12-15",
+#     overview: "A boy and his brother run away from home and hitch cross-country, with help from a girl they meet, to compete in the ultimate video-game championship.",
+#     runtime: 100
+# ).find_or_create_by(tmdb_id: 183)
 
-DailyQuote.find_or_create_by(date: '2024-04-24', quote: "50,000? You got 50,000 on Double Dragon?", watch_title_id: wizard.id)
+# DailyQuote.find_or_create_by(date: '2024-04-24', quote: "50,000? You got 50,000 on Double Dragon?", watch_title_id: wizard.id)
+
+# #########################################################################################
 
 # Halloween
 
@@ -194,7 +196,7 @@ DailyQuote.find_or_create_by(date: '2024-04-24', quote: "50,000? You got 50,000 
 #     runtime: 
 # ).find_or_create_by(tmdb_id:)
 
-# DailyQuote.find_or_create_by(date: '2024-10-08', quote: "Have you been playing with a dead cat?", watch_title_id: troll.id)
+# DailyQuote.find_or_create_by(date: '2024-10-08', quote: "Have you been playing with dead cats?", watch_title_id: troll.id)
 
 # troll_two = WatchTitle.create_with(
 #     tmdb_id: ,

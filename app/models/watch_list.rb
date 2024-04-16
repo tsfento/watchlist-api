@@ -1,6 +1,6 @@
 class WatchList < ApplicationRecord
   validates :private, inclusion: [true, false]
-  validates :title, presence: true, uniqueness: { scope: :user_id }
+  validates :title, presence: true, uniqueness: { scope: :user_id, case_sensitive: false }
 
   belongs_to :user
   has_many :watch_list_followers
