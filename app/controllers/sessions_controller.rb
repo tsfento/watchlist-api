@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
         elsif (DateTime.now.to_i < decoded['exp']) && DateTime.now.to_i > decoded['exp'] - 24.hours
             token = jwt_encode(user_id: @current_user.id)
             render json: { token: token }, status: :ok
+        else
+            render json: { token: 'Token still valid' }, status: :ok
         end
     end
 

@@ -7,10 +7,6 @@ The watchlist API is the backend of my full stack project for CodeLabs. It is a 
 
 The main tables in the API are the **User**, the **WatchList** and WatchTitle**. There are join tables between these 3 to hold data that references each. For instance, the **WatchTitle** table holds basic title data requested from themoviedb.org. The **UserWatchTitle** table joins **User** and **WatchTitle** and holds data for the User such as whether the title is watched, the user's optional rating and the optional review.
 
-# Setup
-
-TODO
-
 # Gems Used
 
 The API utilizes the following gems:
