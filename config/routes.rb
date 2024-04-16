@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # url.com/login
   post '/login', to: 'sessions#create'
 
+  # url.com/check_token
+  post '/check_token', to: 'sessions#check'
+
   # get daily quote
   get '/quote', to: 'daily_quotes#get_quote'
 
