@@ -73,27 +73,33 @@ module WatchDateService
     def self.search_title_dates(params)
         user = User.find_by(username: params[:username])
         search = params[:search]
-        watch_title = WatchTitle.all.select { |f| f.title.downcase.include? search.downcase }[0]
-        if watch_title
-            user_watch_title = UserWatchTitle.find_by(user_id: user.id, watch_title_id: watch_title.id)
+        watch_titles = WatchTitle.all.select { |w| w.title.downcase.include? search.downcase }
+        user_watch_titles = Array.new
+        if watch_titles
+            watch_titles.each do |t|
+                user_watch_titles.push(UserWatchTitle.find_by(user_id: user.id, watch_title_id: t.id))
+            end
+            # user_watch_title = UserWatchTitle.find_by(user_id: user.id, watch_title_id: watch_title.id)
         end
 
         title_dates = Hash.new
         response_array = Array.new
 
-        if user_watch_title
-            if user_watch_title.watch_dates.length > 0
-                user_watch_title.watch_dates.reverse_each do |d|
-                    date = d.date.strftime("%Y-%m-%d")
-                    titles = Array.new
+        if user_watch_titles
+            user_watch_titles.each do |u|
+                if u.watch_dates.length > 0
+                    u.watch_dates.reverse_each do |d|
+                        date = d.date.strftime("%Y-%m-%d")
+                        titles = Array.new
 
-                    d.user_watch_titles.reverse_each do |t|
-                        titles.push(t.watch_title)
+                        d.user_watch_titles.reverse_each do |t|
+                            titles.push(t.watch_title)
+                        end
+
+                        title_dates[date] = titles
                     end
-
-                    title_dates[date] = titles
+                    response_array.push(title_dates)
                 end
-                response_array.push(title_dates)
             end
         end
         
