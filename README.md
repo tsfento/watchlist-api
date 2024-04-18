@@ -24,4 +24,4 @@ Testing was made possible by using the **rspec-rails** gem along with **factory_
 The frontend client repository is located at: https://github.com/tsfento/watchlist-client
 
 # ERD
-![](watchlist_erd.png)
+![](watchlist_final.png)
