@@ -34,7 +34,7 @@ module WatchDateService
                 date = d.date.strftime("%Y-%m-%d")
                 titles = Array.new
 
-                d.user_watch_titles.reverse_each do |t|
+                d.user_watch_titles.where(user_id: user.id).reverse_each do |t|
                     titles.push(t.watch_title)
                 end
 
