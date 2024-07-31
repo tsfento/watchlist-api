@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
   # root "posts#index"
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     # add watch date to title for specific user
     post '/:username/add_watch_date', to: 'watch_dates#add_watch_date'
     # get watch dates for user
-    get '/:username/watch_dates', to: 'watch_dates#get_watch_dates'
+    get '/:username/watch_dates', to: 'watch_dates#fetch_watch_dates'
     # get specific watch date for user
     post '/:username/watch_date', to: 'watch_dates#search_watch_date'
     # get watch dates for specific title
