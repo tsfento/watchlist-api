@@ -8,7 +8,8 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # origins "*"
-    origins 'localhost:4200',
+    origins'localhost:4200',
+      'localhost:5173',
       'https://watchlist-client-neon.vercel.app',
       'https://watchlist-client-neon.vercel.app',
       'https://watchlist-client-9nwvsh5zp-tyler-fentons-projects.vercel.app'
