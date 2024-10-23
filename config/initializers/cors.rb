@@ -13,7 +13,10 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             'localhost:3001',
             'https://watchlist-client-neon.vercel.app',
             'https://watchlist-client-neon.vercel.app',
-            'https://watchlist-client-9nwvsh5zp-tyler-fentons-projects.vercel.app'
+            'https://watchlist-client-9nwvsh5zp-tyler-fentons-projects.vercel.app',
+            'https://watchlist-client-nextjs.vercel.app/',
+            'https://watchlist-client-nextjs-git-main-tyler-fentons-projects.vercel.app/',
+            'https://watchlist-client-nextjs-qejweekh0-tyler-fentons-projects.vercel.app/'
 
 
     resource '*',
